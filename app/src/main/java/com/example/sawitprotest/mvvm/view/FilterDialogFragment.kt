@@ -10,6 +10,8 @@ import com.example.sawitprotest.util.TimePicker
 import com.example.sawitprotest.util.setSingleOnClickListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+typealias OnApplyListener = (startDate: String?, endDate: String?, licenseNumber: String?, driverName: String?) -> Unit
+
 class FilterDialogFragment(
     private var startDate: String? = null,
     private var endDate: String? = null,
@@ -19,10 +21,6 @@ class FilterDialogFragment(
 ) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilterDialogBinding
-
-    interface OnApplyListener {
-        fun onApply(startDate: String?, endDate: String?, licenseNumber: String?, driverName: String?)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,11 +62,11 @@ class FilterDialogFragment(
                     startDate = null
                     endDate = null
                 }
-                listener?.onApply(
-                    startDate = startDate,
-                    endDate = endDate,
-                    licenseNumber = editLicenseNumber.text.toString(),
-                    driverName = editDriverName.text.toString()
+                listener?.invoke(
+                    startDate,
+                    endDate,
+                    editLicenseNumber.text.toString(),
+                    editDriverName.text.toString()
                 )
                 dismiss()
             }

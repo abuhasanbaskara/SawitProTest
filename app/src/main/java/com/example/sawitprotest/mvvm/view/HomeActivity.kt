@@ -230,16 +230,14 @@ class HomeActivity : AppCompatActivity() {
             endDate = viewModel.endDate,
             licenseNumber = viewModel.licenseNumber,
             driverName = viewModel.driverName,
-            listener = object : FilterDialogFragment.OnApplyListener {
-                override fun onApply(startDate: String?, endDate: String?, licenseNumber: String?, driverName: String?) {
-                    viewModel.startDate = startDate
-                    viewModel.endDate = endDate
-                    viewModel.licenseNumber = licenseNumber
-                    viewModel.driverName = driverName
+            listener = { startDate, endDate, licenseNumber, driverName ->
+                viewModel.startDate = startDate
+                viewModel.endDate = endDate
+                viewModel.licenseNumber = licenseNumber
+                viewModel.driverName = driverName
 
-                    binding.searchView.setQuery("", false)
-                    callByFilter()
-                }
+                binding.searchView.setQuery("", false)
+                callByFilter()
             }
         )
 
