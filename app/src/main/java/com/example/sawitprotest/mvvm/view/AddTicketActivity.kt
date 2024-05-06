@@ -58,164 +58,11 @@ class AddTicketActivity : AppCompatActivity() {
     private fun bindView() {
         with(binding){
             disableButtonSubmit()
-            val correctDrawable = ContextCompat.getDrawable(binding.root.context, R.drawable.green_check_circle_outline_32)
-            val errorDrawable = ContextCompat.getDrawable(binding.root.context, R.drawable.red_error_outline_32)
             customActionBar.tvTitle.text = getString(R.string.ticket_form)
             customActionBar.ivBack.setSingleOnClickListener {
                 finish()
             }
-            editDate.setSingleOnClickListener {
-                binding.root.context?.let { it1 ->
-                    TimePicker.showDatePicker(it1) { selectedDate ->
-                        editDate.setText(selectedDate)
-                    }
-                }
-            }
-            editTime.setSingleOnClickListener {
-                binding.root.context?.let { it1 ->
-                    TimePicker.showTimePicker(it1) { selectedTime ->
-                        editTime.setText(selectedTime)
-                    }
-                }
-            }
-            editDate.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    checkAllForm()
-                }
-            })
-            editTime.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    checkAllForm()
-                }
-            })
-            editLicenseNumber.filters = arrayOf<InputFilter>(InputFilter.AllCaps())
-            editLicenseNumber.filters += InputFilter.LengthFilter(11)
-            editLicenseNumber.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    if (editLicenseNumber.text.isEmpty()){
-                        editLicenseNumber.hideEndDrawable()
-                        editLicenseNumber.setBackgroundResource(R.drawable.curved_outlined_background)
-                    }else if (isValidLicensePlate(editLicenseNumber.text.toString())){
-                        editLicenseNumber.showEndDrawable(correctDrawable)
-                        editLicenseNumber.setBackgroundResource(R.drawable.curved_outlined_background)
-                    } else {
-                        editLicenseNumber.showEndDrawable(errorDrawable)
-                        editLicenseNumber.setBackgroundResource(R.drawable.curved_error_background)
-                    }
-
-                    checkAllForm()
-                }
-            })
-            editDriverName.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    checkAllForm()
-                }
-            })
-            editInbound.filters = arrayOf(DecimalInputFilter(maxValue = 10))
-            editOutbound.filters = arrayOf(DecimalInputFilter(maxValue = 10))
-            editNetWeight.filters = arrayOf(DecimalInputFilter(maxValue = 10))
-            editInbound.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    val inbound = editInbound.text.toString().toDoubleOrNull() ?: 0.0
-                    val outbound = editOutbound.text.toString().toDoubleOrNull() ?: 0.0
-                    if (inbound >= outbound && editOutbound.text.isNotEmpty()) {
-                        val result = inbound - outbound
-                        editNetWeight.setText(result.toString())
-                        editOutbound.hideEndDrawable()
-                        editOutbound.setBackgroundResource(R.drawable.curved_outlined_background)
-                    } else {
-                        editOutbound.showEndDrawable(errorDrawable)
-                        editOutbound.setBackgroundResource(R.drawable.curved_error_background)
-                    }
-                    if (editInbound.text.isNotEmpty()){
-                        editInbound.hideEndDrawable()
-                        editInbound.setBackgroundResource(R.drawable.curved_outlined_background)
-                    } else {
-                        editInbound.showEndDrawable(errorDrawable)
-                        editInbound.setBackgroundResource(R.drawable.curved_error_background)
-                    }
-
-                    checkAllForm()
-                }
-            })
-            editOutbound.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    val inbound = editInbound.text.toString().toDoubleOrNull() ?: 0.0
-                    val outbound = editOutbound.text.toString().toDoubleOrNull() ?: 0.0
-                    if (inbound >= outbound && editOutbound.text.isNotEmpty()) {
-                        val result = inbound - outbound
-                        editNetWeight.setText(result.toString())
-                        editOutbound.hideEndDrawable()
-                        editOutbound.setBackgroundResource(R.drawable.curved_outlined_background)
-                    } else {
-                        editOutbound.showEndDrawable(errorDrawable)
-                        editOutbound.setBackgroundResource(R.drawable.curved_error_background)
-                    }
-
-                    checkAllForm()
-                }
-            })
-            editNetWeight.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    checkAllForm()
-                }
-            })
+            setUpTextListener()
             buttonSubmit.setSingleOnClickListener {
                 AlertDialog.showAlertDialog(
                     binding.root.context,
@@ -240,6 +87,88 @@ class AddTicketActivity : AppCompatActivity() {
                     }
                 )
             }
+        }
+    }
+
+    private fun setUpTextListener() {
+        val correctDrawable = ContextCompat.getDrawable(binding.root.context, R.drawable.green_check_circle_outline_32)
+        val errorDrawable = ContextCompat.getDrawable(binding.root.context, R.drawable.red_error_outline_32)
+
+        fun createTextWatcher(onTextChanged: () -> Unit): TextWatcher {
+            return object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    // Noncompliant - method is empty
+                }
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    // Noncompliant - method is empty
+                }
+                override fun afterTextChanged(p0: Editable?) {
+                    onTextChanged()
+                    checkAllForm()
+                }
+            }
+        }
+
+        fun handleWeightChanges() {
+            with(binding){
+                val inbound = editInbound.text.toString().toDoubleOrNull() ?: 0.0
+                val outbound = editOutbound.text.toString().toDoubleOrNull() ?: 0.0
+                if (inbound >= outbound && editOutbound.text.isNotEmpty()) {
+                    val result = inbound - outbound
+                    editNetWeight.setText(result.toString())
+                    editOutbound.hideEndDrawable()
+                    editOutbound.setBackgroundResource(R.drawable.curved_outlined_background)
+                } else {
+                    editOutbound.showEndDrawable(errorDrawable)
+                    editOutbound.setBackgroundResource(R.drawable.curved_error_background)
+                }
+                if (editInbound.text.isNotEmpty()){
+                    editInbound.hideEndDrawable()
+                    editInbound.setBackgroundResource(R.drawable.curved_outlined_background)
+                } else {
+                    editInbound.showEndDrawable(errorDrawable)
+                    editInbound.setBackgroundResource(R.drawable.curved_error_background)
+                }
+            }
+        }
+
+        with(binding) {
+            editDate.setSingleOnClickListener {
+                binding.root.context?.let { it1 ->
+                    TimePicker.showDatePicker(it1) { selectedDate ->
+                        editDate.setText(selectedDate)
+                    }
+                }
+            }
+            editTime.setSingleOnClickListener {
+                binding.root.context?.let { it1 ->
+                    TimePicker.showTimePicker(it1) { selectedTime ->
+                        editTime.setText(selectedTime)
+                    }
+                }
+            }
+            editDate.addTextChangedListener(createTextWatcher { })
+            editTime.addTextChangedListener(createTextWatcher { })
+            editLicenseNumber.filters = arrayOf<InputFilter>(InputFilter.AllCaps(), InputFilter.LengthFilter(11))
+            editLicenseNumber.addTextChangedListener(createTextWatcher {
+                if (editLicenseNumber.text.isEmpty()){
+                    editLicenseNumber.hideEndDrawable()
+                    editLicenseNumber.setBackgroundResource(R.drawable.curved_outlined_background)
+                } else if (isValidLicensePlate(editLicenseNumber.text.toString())){
+                    editLicenseNumber.showEndDrawable(correctDrawable)
+                    editLicenseNumber.setBackgroundResource(R.drawable.curved_outlined_background)
+                } else {
+                    editLicenseNumber.showEndDrawable(errorDrawable)
+                    editLicenseNumber.setBackgroundResource(R.drawable.curved_error_background)
+                }
+            })
+            editDriverName.addTextChangedListener(createTextWatcher { })
+            editInbound.filters = arrayOf(DecimalInputFilter(maxValue = 10))
+            editOutbound.filters = arrayOf(DecimalInputFilter(maxValue = 10))
+            editNetWeight.filters = arrayOf(DecimalInputFilter(maxValue = 10))
+            editInbound.addTextChangedListener(createTextWatcher { handleWeightChanges() })
+            editOutbound.addTextChangedListener(createTextWatcher { handleWeightChanges() })
+            editNetWeight.addTextChangedListener(createTextWatcher { })
         }
     }
 

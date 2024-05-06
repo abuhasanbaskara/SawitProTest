@@ -3,8 +3,6 @@ package com.example.sawitprotest.mvvm.view
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.sawitprotest.R
 import com.example.sawitprotest.databinding.ActivityDetailTicketBinding
 import com.example.sawitprotest.mvvm.data.Ticket

@@ -2,6 +2,7 @@ package com.example.sawitprotest.mvvm.repository
 
 import com.example.sawitprotest.mvvm.database.TaskDatabase
 import com.example.sawitprotest.mvvm.data.Ticket
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -10,20 +11,20 @@ import javax.inject.Inject
 
 class TicketRepository @Inject constructor (private val taskDatabase: TaskDatabase) {
 
-    suspend fun insertTicket(ticket: Ticket) {
-        withContext(Dispatchers.IO) {
+    suspend fun insertTicket(ticket: Ticket, dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+        withContext(dispatcher) {
             taskDatabase.ticketDao().insertTicket(ticket)
         }
     }
 
-    suspend fun updateTicket(ticket: Ticket) {
-        withContext(Dispatchers.IO) {
+    suspend fun updateTicket(ticket: Ticket, dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+        withContext(dispatcher) {
             taskDatabase.ticketDao().updateTicket(ticket)
         }
     }
 
-    suspend fun getTicketsByDateRange(startDate: String, endDate: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByDateRange(startDate: String, endDate: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByDateRange(startDate, endDate)
                 emit(filteredTickets)
@@ -31,8 +32,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByLicenseNumber(licenseNumber: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByLicenseNumber(licenseNumber: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByLicenseNumber(licenseNumber)
                 emit(filteredTickets)
@@ -40,8 +41,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByDriverName(driverName: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByDriverName(driverName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByDriverName(driverName)
                 emit(filteredTickets)
@@ -49,8 +50,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByDateRangeAndLicense(startDate: String, endDate: String, licenseNumber: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByDateRangeAndLicense(startDate: String, endDate: String, licenseNumber: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByDateRangeAndLicense(startDate, endDate, licenseNumber)
                 emit(filteredTickets)
@@ -58,8 +59,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByDateRangeAndDriver(startDate: String, endDate: String, driverName: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByDateRangeAndDriver(startDate: String, endDate: String, driverName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByDateRangeAndDriver(startDate, endDate, driverName)
                 emit(filteredTickets)
@@ -67,8 +68,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByLicenseAndDriver(licenseNumber: String, driverName: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByLicenseAndDriver(licenseNumber: String, driverName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByLicenseAndDriver(licenseNumber, driverName)
                 emit(filteredTickets)
@@ -76,8 +77,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getTicketsByDateRangeAndLicenseAndDriver(startDate: String, endDate: String, licenseNumber: String, driverName: String): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getTicketsByDateRangeAndLicenseAndDriver(startDate: String, endDate: String, licenseNumber: String, driverName: String, dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getTicketsByDateRangeAndLicenseAndDriver(startDate, endDate, licenseNumber, driverName)
                 emit(filteredTickets)
@@ -85,8 +86,8 @@ class TicketRepository @Inject constructor (private val taskDatabase: TaskDataba
         }
     }
 
-    suspend fun getAllTickets(): Flow<List<Ticket>> {
-        return withContext(Dispatchers.IO) {
+    suspend fun getAllTickets(dispatcher: CoroutineDispatcher = Dispatchers.IO): Flow<List<Ticket>> {
+        return withContext(dispatcher) {
             flow {
                 val filteredTickets = taskDatabase.ticketDao().getAllTickets()
                 emit(filteredTickets)

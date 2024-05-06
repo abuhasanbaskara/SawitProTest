@@ -1,16 +1,0 @@
-
-•kotlin:S3776:"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(õæ¡ÕşÿÿÿÿJ$71a8e733-41a4-4ab4-b7ca-a086b435af1b
-˜kotlin:S1186R"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$2be6be65-3fb3-4f6d-a284-5cd56c5a96dd
-kotlin:S1186V"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$aa05644d-b525-4940-bb21-309b89826c1a
-˜kotlin:S1186_"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$514c0764-6ba5-49ae-bdaa-c373eb3c3d39
-kotlin:S1186c"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$560838e2-2a3c-4b68-91ed-5235528b0154
-˜kotlin:S1186n"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$d1db9e44-f2de-4ed9-8cf7-b5011f70dabf
-kotlin:S1186r"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$55522416-ff44-4b45-8c10-6e600d62277c
-™kotlin:S1186†"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$c5d1c9c0-6196-4930-8fce-5466b87d7725
-kotlin:S1186Š"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$d71d1f7b-35d9-4d2a-8e0d-7ad136732634
-™kotlin:S1186–"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$1c86bb4f-0094-4631-9520-f66d8ea5f9aa
-kotlin:S1186š"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$bf0799d4-4f2d-4adc-b2ec-040738d51b90
-™kotlin:S1186¶"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$1d3cdffe-7f6d-4e89-b628-8f5d9c0f82ad
-kotlin:S1186º"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$312381a7-c986-4920-b1d4-43d31ce3f88e
-™kotlin:S1186Ï"ZAdd a nested comment explaining why this function is empty or complete the implementation.(´„˜J$63889276-d2ee-49f4-91c9-0d851d3eabce
-kotlin:S1186Ó"ZAdd a nested comment explaining why this function is empty or complete the implementation.(£ÖÁÌıÿÿÿÿJ$34319e21-513e-4a2d-a1ab-2fca84a12ff8

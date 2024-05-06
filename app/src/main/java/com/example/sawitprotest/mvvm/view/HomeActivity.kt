@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -136,7 +137,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun syncDataWithFirebase() {
-//        databaseReference = Firebase.database("https://sawitprotest-7c3ab-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("tickets")
         databaseReference = FirebaseDatabase.getInstance().reference.child("tickets")
         CoroutineScope(Dispatchers.IO).launch {
             viewModel.getAllTicketsAndSync()
@@ -180,9 +180,10 @@ class HomeActivity : AppCompatActivity() {
 
     private suspend fun syncLocalToRemote(
         localData: List<Ticket>,
-        remoteData: List<Ticket>
+        remoteData: List<Ticket>,
+        dispatcher: CoroutineDispatcher = Dispatchers.IO
     ) {
-        withContext(Dispatchers.IO) {
+        withContext(dispatcher) {
             try {
                 for (ticket in localData) {
                     val ticketExistsRemotely = remoteData.any { it.id == ticket.id }
@@ -201,9 +202,10 @@ class HomeActivity : AppCompatActivity() {
 
     private suspend fun syncRemoteToLocal(
         localData: List<Ticket>,
-        remoteData: List<Ticket>
+        remoteData: List<Ticket>,
+        dispatcher: CoroutineDispatcher = Dispatchers.IO
     ) {
-        withContext(Dispatchers.IO) {
+        withContext(dispatcher) {
             try {
                 // For each ticket in remoteData, check if it exists in localData
                 for (ticket in remoteData) {
@@ -244,24 +246,33 @@ class HomeActivity : AppCompatActivity() {
         dialogFragment.show(supportFragmentManager, "filter_dialog")
     }
 
-    private fun callByFilter(){
+    private fun callByFilter() {
         CoroutineScope(Dispatchers.IO).launch {
-            if (!viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.licenseNumber.isNullOrBlank() && !viewModel.driverName.isNullOrBlank()) {
-                viewModel.getTicketsByDateRangeAndLicenseAndDriver(viewModel.startDate!!, viewModel.endDate!!, viewModel.licenseNumber!!, viewModel.driverName!!)
-            } else if (!viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.licenseNumber.isNullOrBlank()) {
-                viewModel.getTicketsByDateRangeAndLicense(viewModel.startDate!!, viewModel.endDate!!, viewModel.licenseNumber!!)
-            } else if (!viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.driverName.isNullOrBlank()) {
-                viewModel.getTicketsByDateRangeAndDriver(viewModel.startDate!!, viewModel.endDate!!, viewModel.driverName!!)
-            } else if (!viewModel.licenseNumber.isNullOrBlank() && !viewModel.driverName.isNullOrBlank()) {
-                viewModel.getTicketsByLicenseAndDriver(viewModel.licenseNumber!!, viewModel.driverName!!)
-            } else if (!viewModel.licenseNumber.isNullOrBlank()) {
-                viewModel.getTicketsByLicenseNumber(viewModel.licenseNumber!!)
-            } else if (!viewModel.driverName.isNullOrBlank()) {
-                viewModel.getTicketsByDriverName(viewModel.driverName!!)
-            } else if (!viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank()) {
-                viewModel.getTicketsByDateRange(viewModel.startDate!!, viewModel.endDate!!)
-            } else {
-                viewModel.getAllTickets()
+            when {
+                !viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.licenseNumber.isNullOrBlank() && !viewModel.driverName.isNullOrBlank() -> {
+                    viewModel.getTicketsByDateRangeAndLicenseAndDriver(viewModel.startDate!!, viewModel.endDate!!, viewModel.licenseNumber!!, viewModel.driverName!!)
+                }
+                !viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.licenseNumber.isNullOrBlank() -> {
+                    viewModel.getTicketsByDateRangeAndLicense(viewModel.startDate!!, viewModel.endDate!!, viewModel.licenseNumber!!)
+                }
+                !viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() && !viewModel.driverName.isNullOrBlank() -> {
+                    viewModel.getTicketsByDateRangeAndDriver(viewModel.startDate!!, viewModel.endDate!!, viewModel.driverName!!)
+                }
+                !viewModel.licenseNumber.isNullOrBlank() && !viewModel.driverName.isNullOrBlank() -> {
+                    viewModel.getTicketsByLicenseAndDriver(viewModel.licenseNumber!!, viewModel.driverName!!)
+                }
+                !viewModel.licenseNumber.isNullOrBlank() -> {
+                    viewModel.getTicketsByLicenseNumber(viewModel.licenseNumber!!)
+                }
+                !viewModel.driverName.isNullOrBlank() -> {
+                    viewModel.getTicketsByDriverName(viewModel.driverName!!)
+                }
+                !viewModel.startDate.isNullOrBlank() && !viewModel.endDate.isNullOrBlank() -> {
+                    viewModel.getTicketsByDateRange(viewModel.startDate!!, viewModel.endDate!!)
+                }
+                else -> {
+                    viewModel.getAllTickets()
+                }
             }
         }
     }

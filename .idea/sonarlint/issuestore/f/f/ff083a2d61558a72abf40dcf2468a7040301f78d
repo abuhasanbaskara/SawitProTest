@@ -1,19 +1,9 @@
 
-Zkotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚üJ$277f20c4-56cf-4f00-800c-a4e7a7a5a984
-Zkotlin:S6310"Avoid hardcoded dispatchers.(Ô¥‚üJ$f6df6e3b-ff6f-4e10-810e-e7ba5218a337
-Zkotlin:S6310"Avoid hardcoded dispatchers.(ÏÃâJ$462d9974-f36b-41ed-abcf-c23fdd8c751b
-Zkotlin:S6310#"Avoid hardcoded dispatchers.(ÏÃâJ$50fb1bd9-2a08-45e5-8f85-8308328489e3
-Zkotlin:S6310,"Avoid hardcoded dispatchers.(ÏÃâJ$5fc47b7d-917c-4163-9eb4-9c277b638a96
-Zkotlin:S63105"Avoid hardcoded dispatchers.(ÏÃâJ$c242f0e9-f7b7-4f5c-bbe6-bfa2a1213285
-Zkotlin:S6310>"Avoid hardcoded dispatchers.(ÏÃâJ$69aceee0-c35a-47d7-bdc9-0da4d4a63605
-Zkotlin:S6310G"Avoid hardcoded dispatchers.(ÏÃâJ$6d690eaf-8efc-47c2-bd29-8b8ad6f761a4
-Zkotlin:S6310P"Avoid hardcoded dispatchers.(ÏÃâJ$70fcd5b7-70e8-4d43-a092-67a11bd880a8
-Zkotlin:S6310Y"Avoid hardcoded dispatchers.(ÏÃâJ$b5b09dd0-cdff-4d6d-b959-ef07eee16019
-~kotlin:S6309"@Functions returning "Flow" or "Channel" should not be suspending(Ë§êÒJ$63f06588-f414-48b7-8f6b-5d33771f886a
-ƒkotlin:S6309""@Functions returning "Flow" or "Channel" should not be suspending(˜ö¶¶úÿÿÿÿJ$d459423a-a119-43e2-8843-b12cda40b97b
-ƒkotlin:S6309+"@Functions returning "Flow" or "Channel" should not be suspending(‰ÒƒÿÿÿÿÿJ$870e563d-bc1b-40fd-8706-79f4795717a2
-ƒkotlin:S63094"@Functions returning "Flow" or "Channel" should not be suspending(â€§éÿÿÿÿÿJ$79a0243b-8c11-488f-989f-c7c46034876a
-~kotlin:S6309="@Functions returning "Flow" or "Channel" should not be suspending(ĞÀÆÆJ$ca8171a8-0b02-4163-8523-20a6de706ebf
-ƒkotlin:S6309F"@Functions returning "Flow" or "Channel" should not be suspending(¸Ê”šúÿÿÿÿJ$e632de36-fd77-4811-8caf-2043be16a41a
-ƒkotlin:S6309O"@Functions returning "Flow" or "Channel" should not be suspending(ÑÀ‘ÏşÿÿÿÿJ$5b5afcc6-cd86-44c2-a5cf-fe201c3ea936
-ƒkotlin:S6309X"@Functions returning "Flow" or "Channel" should not be suspending(ûĞäªùÿÿÿÿJ$fd3b9d75-84b6-48a1-a471-70bbbe1f6c0e
+…kotlin:S6309"@Functions returning "Flow" or "Channel" should not be suspending(Áƒ•´8ÜàÕßô1J$419ac76d-ba4e-476d-b7b9-ecd25b232144
+…kotlin:S6309#"@Functions returning "Flow" or "Channel" should not be suspending(½ÍÇ›8ÜàÕßô1J$12b00854-4505-49f9-a4e2-328708d0acda
+Škotlin:S6309,"@Functions returning "Flow" or "Channel" should not be suspending(ìÔÓÕüÿÿÿÿ8ÜàÕßô1J$597ebd73-4b5d-4614-941e-7200009c6b7d
+…kotlin:S63095"@Functions returning "Flow" or "Channel" should not be suspending(Áµä€8ÜàÕßô1J$735275bd-e5c6-4cfc-9136-b2bbb9556f7c
+„kotlin:S6309>"@Functions returning "Flow" or "Channel" should not be suspending(‹‡²8ÜàÕßô1J$c10ce290-25d6-4d1c-b717-73aa2df8b7b1
+…kotlin:S6309G"@Functions returning "Flow" or "Channel" should not be suspending(Œº¬ 8ÜàÕßô1J$e88bed33-b9b3-46b8-a1ad-75ea4286ab19
+Škotlin:S6309P"@Functions returning "Flow" or "Channel" should not be suspending(‹…úÿÿÿÿ8ÜàÕßô1J$621d89de-dcc2-48f1-b123-32176d1871be
+Škotlin:S6309Y"@Functions returning "Flow" or "Channel" should not be suspending(†Û½Åüÿÿÿÿ8İàÕßô1J$d3a26061-e1bf-4f50-9f7a-47e6d45f50ed

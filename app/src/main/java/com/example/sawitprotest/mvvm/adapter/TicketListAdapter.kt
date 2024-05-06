@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sawitprotest.R
 import com.example.sawitprotest.databinding.TicketCardBinding
 import com.example.sawitprotest.mvvm.data.Ticket
-import com.example.sawitprotest.util.setSingleOnClickListener
 
 class TicketListAdapter(private val context: Context) :
     RecyclerView.Adapter<TicketListAdapter.TicketViewHolder>(){

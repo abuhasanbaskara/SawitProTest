@@ -8,7 +8,6 @@ import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -21,12 +20,24 @@ class BaseApplication : Application() {
             override fun onActivityCreated(activity: Activity, p1: Bundle?) {
                 setWindowInsetsListener(activity.findViewById(android.R.id.content))
             }
-            override fun onActivityStarted(activity: Activity) {}
-            override fun onActivityResumed(activity: Activity) {}
-            override fun onActivityPaused(activity: Activity) {}
-            override fun onActivityStopped(activity: Activity) {}
-            override fun onActivitySaveInstanceState(activity: Activity, p1: Bundle) {}
-            override fun onActivityDestroyed(activity: Activity) {}
+            override fun onActivityStarted(activity: Activity) {
+                // Noncompliant - method is empty
+            }
+            override fun onActivityResumed(activity: Activity) {
+                // Noncompliant - method is empty
+            }
+            override fun onActivityPaused(activity: Activity) {
+                // Noncompliant - method is empty
+            }
+            override fun onActivityStopped(activity: Activity) {
+                // Noncompliant - method is empty
+            }
+            override fun onActivitySaveInstanceState(activity: Activity, p1: Bundle) {
+                // Noncompliant - method is empty
+            }
+            override fun onActivityDestroyed(activity: Activity) {
+                // Noncompliant - method is empty
+            }
         })
     }
 
