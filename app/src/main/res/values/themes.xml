@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SawitProTest" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#648b5c</item>
+        <item name="colorPrimaryVariant">#445e3e</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.SawitProTest" parent="Base.Theme.SawitProTest" />
+
+    <style name="Widget.MyApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>
